@@ -1,0 +1,33 @@
+<html ng-app="countryApp">
+<head>
+	<meta charset="utf-8">
+	<title>Countries and population</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+	<script>
+		var countryApp = angular.module('countryApp', []);
+		countryApp.controller('countryCtrl', function($scope){
+			$scope.countries = [
+				{"name": "China", "population": 1359821000},
+				{"name": "Unites States of America", "population": 312247000},
+				{"name": "India", "population": 1205625000}
+
+			];
+		});
+	</script>
+</head>
+<body ng-controller="countryCtrl">
+	<ul>
+		<li ng-repeat="country in countries"> {{country.name}} - population {{country.population}}</li>
+	</ul>
+	<table>
+		<tr>
+			<th>Country</th>
+			<th>Population</th>
+		</tr>
+		<tr ng-repeat="country in countries">
+			<td>{{country.name}}</td>
+			<td>{{country.population}}</td>
+		</tr>
+	</table>
+</body>
+</html>

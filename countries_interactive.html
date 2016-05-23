@@ -1,0 +1,49 @@
+<html ng-app="countryApp">
+<head>
+	<meta charset="utf-8">
+	<title>fetch data using angular</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+	<script>
+		var countryApp = angular.module('countryApp', []);
+		countryApp.controller('countryCtrl', function($scope, $http){
+			$http.get('countries.json').success(function(data){
+			$scope.countries = data;
+		});
+			$scope.sortField = 'population';
+			$scope.reverse = true;
+	});
+	</script>
+	<style type="text/css">
+		*{
+			background-color: #00FF00;
+			font-family: Century Gothic, sans-serif;
+		}
+		input{
+			background-color: #FFFFFF;
+			border: 1px solid black;
+		}
+
+
+
+	</style>
+</head>
+<body ng-controller="countryCtrl">
+	<h1>Search by country name or population</h1>
+	<h3>AngularJS will filter input as it is entered to display the most likely choices</h3>
+	<h4>some flags will be updated as more data becomes available</h4>
+	Search:<input ng-model="query" type="text" />
+	<table>
+		<tr>
+			<th><a href="" ng-click="sortField = 'name'; reverse = !reverse">Country</a></th>
+			<th><a href="" ng-click="sortField = 'population'; reverse = !reverse">Population</a></th>
+		</tr>
+		<tr ng-repeat="country in countries | filter:query | orderBy:sortField:reverse">
+			<td>{{country.name}}</td>
+			<td>{{country.population}}</td>
+			<td><img src="{{country.flagURL}}" width="100"></img></td>
+		</tr>
+
+</table>
+
+</body>
+</html>

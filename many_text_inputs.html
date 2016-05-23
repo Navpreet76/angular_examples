@@ -1,0 +1,23 @@
+<html ng-app>
+<head>
+	<meta charset="utf-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+
+	<title>Angularjs data binding with many text inputs.</title>
+</head>
+<body>
+	Name:<input ng-model="name" type="text" />
+	<br>
+	Name:<input ng-model="name" type="text" />
+	<br>
+	Name:<input ng-model="name" type="text" />
+	<br>
+	Hello {{ name }}
+	<br>
+	First Name:<input ng-model="firstName" type="text"/>
+	<br>
+	Last Name:<input ng-model="lastName" type="text" />
+	<br>
+	Hello {{firstName}} {{lastName}}
+</body>
+</html>
